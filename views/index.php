@@ -33,9 +33,14 @@ $canalActivo = $canalActivo ?? null;
             <small>Conectado</small>
         </div>
     </div>
-    <form action="../procesos/logout.php" method="post">
-        <button type="submit" class="btn-salir">Salir</button>
-    </form>
+    <div class="acciones-barra">
+        <a class="btn-amigos" href="amigos.php" title="Amigos">
+            <img src="../img/icono_amigos.png" alt="Ver amigos">
+        </a>
+        <form action="../procesos/logout.php" method="post">
+            <button type="submit" class="btn-salir">Salir</button>
+        </form>
+    </div>
 </header>
 
 <main class="layout">
