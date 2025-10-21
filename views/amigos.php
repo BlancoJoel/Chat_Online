@@ -114,6 +114,7 @@ try {
     </div>
 </div>
 
+
 <script>
 // Función para iniciar chat (ajusta la ruta si tu chat está en otra ubicación)
 function startChat(friendId){
