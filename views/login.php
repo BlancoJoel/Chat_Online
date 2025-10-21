@@ -16,7 +16,7 @@ unset($_SESSION['errores'], $_SESSION['exito']);
 <body>
     <main class="contenedor">
         <section class="tarjeta">
-            <h1>Chat Online</h1>
+            <h1>Bienvenido a el chat mas sensual de europa</h1>
 
             <form action="../procesos/procesar_login.php" method="post" autocomplete="off" class="formulario">
                 <label>
