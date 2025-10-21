@@ -40,7 +40,7 @@ try {
     ];
 
     $_SESSION['exito'] = 'Sesión iniciada correctamente.';
-    header('Location: ../index.php');
+    header('Location: ../views/index.php');
     exit;
 } catch (PDOException $e) {
     $_SESSION['errores'] = ['Error de conexión.'];
