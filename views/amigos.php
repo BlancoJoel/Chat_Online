@@ -60,7 +60,7 @@ try {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Amigos - Chat</title>
-<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <div class="page">
@@ -75,26 +75,40 @@ try {
                 <input type="search" id="search" placeholder="Buscar amigo..." aria-label="Buscar amigo">
             </div>
 
-            <div class="list" id="friendsList">
-                <?php foreach($friends as $f): 
-                    $status = isset($f['status']) && $f['status']==='online' ? 'online' : 'offline';
-                    $nameEsc = htmlspecialchars($f['name'], ENT_QUOTES, 'UTF-8');
-                    $avatar = htmlspecialchars($f['avatar'], ENT_QUOTES, 'UTF-8');
-                    $id = htmlspecialchars($f['id'], ENT_QUOTES, 'UTF-8');
-                ?>
-                <div class="friend" data-name="<?php echo strtolower($nameEsc); ?>">
-                    <div class="avatar" aria-hidden="true">
-                        <img src="<?php echo $avatar; ?>" alt="">
-                    </div>
-                    <div class="info">
-                        <div class="name"><?php echo $nameEsc; ?></div>
-                        <div class="status"><span class="dot <?php echo $status; ?>"></span><?php echo $status === 'online' ? 'En línea' : 'Desconectado'; ?></div>
-                    </div>
-                    <div class="actions">
-                        <button class="btn chat" onclick="startChat('<?php echo $id; ?>')" aria-label="Iniciar chat con <?php echo $nameEsc; ?>">Iniciar chat</button>
-                    </div>
-                </div>
-                <?php endforeach; ?>
+            <div class="mesa-amigos">
+                <table class="friends-table" id="friendsTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">Avatar</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($friends as $f):
+                        $status = isset($f['status']) && $f['status'] === 'online' ? 'online' : 'offline';
+                        $nameEsc = htmlspecialchars($f['name'], ENT_QUOTES, 'UTF-8');
+                        $avatar = htmlspecialchars($f['avatar'], ENT_QUOTES, 'UTF-8');
+                        $id = htmlspecialchars($f['id'], ENT_QUOTES, 'UTF-8');
+                    ?>
+                        <tr data-name="<?php echo strtolower($nameEsc); ?>">
+                            <td class="avatar-cell">
+                                <img src="<?php echo $avatar; ?>" alt="Avatar de <?php echo $nameEsc; ?>">
+                            </td>
+                            <td class="name-cell"><?php echo $nameEsc; ?></td>
+                            <td class="status-cell">
+                                <span class="badge-status <?php echo $status; ?>">
+                                    <?php echo $status === 'online' ? 'En línea' : 'Desconectado'; ?>
+                                </span>
+                            </td>
+                            <td class="action-cell">
+                                <button class="btn chat" onclick="startChat('<?php echo $id; ?>')" aria-label="Iniciar chat con <?php echo $nameEsc; ?>">Iniciar chat</button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
         </aside>
     </div>
@@ -107,12 +121,12 @@ function startChat(friendId){
 }
 
 // Filtrado básico de la lista
-document.getElementById('search').oninput = function(e){
+document.getElementById('search').oninput = function (e) {
     var q = e.target.value.trim().toLowerCase();
-    var items = document.querySelectorAll('#friendsList .friend');
-    items.forEach(function(it){
-        var name = it.getAttribute('data-name') || '';
-        it.style.display = q === '' || name.indexOf(q) !== -1 ? '' : 'none';
+    var rows = document.querySelectorAll('#friendsTable tbody tr');
+    rows.forEach(function (row) {
+        var name = row.getAttribute('data-name') || '';
+        row.style.display = q === '' || name.indexOf(q) !== -1 ? '' : 'none';
     });
 };
 </script>
