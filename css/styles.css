@@ -1,0 +1,189 @@
+:root {
+    color-scheme: dark;
+    font-family: "Manrope", "Segoe UI", sans-serif;
+    --fondo: #24010f;
+    --panel-izq: linear-gradient(135deg, #ff3366, #8f0037);
+    --panel-der: linear-gradient(135deg, #3d0b1e, #18000b);
+    --degradado: linear-gradient(135deg, #ff4d6d, #ff9e00);
+    --texto: #ffeef3;
+    --muted: #ff8fa3;
+    --borde: rgba(255, 77, 109, 0.45);
+    --hover: rgba(255, 77, 109, 0.25);
+    --propio: linear-gradient(135deg, rgba(255, 77, 109, 0.75), rgba(255, 158, 0, 0.55));
+    --ajeno: rgba(61, 11, 30, 0.8);
+    --btn: linear-gradient(135deg, #ff4d6d, #ff9e00);
+    --bg-card: rgba(255,255,255,0.04);
+    --muted-2: #b58aa0;
+    --online: #24c27a;
+    --offline: #6b6b73;
+    --shadow: rgba(0,0,0,0.4);
+    --radius: 12px;
+}
+
+/* Contenedor principal */
+.page {
+    min-height:100vh;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding:24px;
+    background:linear-gradient(180deg,#f3f6fb,#eef2fb);
+    font-family:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+/* Tarjeta central */
+.panel {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 420px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px var(--shadow);
+    overflow:hidden;
+    display:flex;
+    gap:24px;
+    padding:16px;
+    box-sizing:border-box;
+}
+
+/* Lista lateral */
+.sidebar {
+    width: 100%;
+    max-width: 360px;
+    border-right: none;
+    padding:12px;
+    box-sizing:border-box;
+}
+.header {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:12px;
+}
+.title {
+    font-size:18px;
+    font-weight:700;
+    color:#1f2d3d;
+}
+.search {
+    margin-bottom:12px;
+}
+.search input {
+    width:100%;
+    padding:8px 12px;
+    border-radius:8px;
+    border:1px solid #e2e8f0;
+    font-size:14px;
+}
+
+/* Lista de amigos */
+.list {
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    max-height:64vh;
+    overflow:auto;
+    padding-right:6px;
+}
+.friend {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:10px;
+    border-radius:10px;
+    border: 1px solid transparent;
+    transition:background .12s, box-shadow .12s;
+}
+.friend:hover {
+    background: rgba(255,255,255,0.02);
+    border-color: rgba(255,255,255,0.03);
+    box-shadow:0 2px 8px rgba(99,102,241,0.06);
+}
+.avatar {
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    overflow:hidden;
+    flex:0 0 48px;
+    background:#ddd;
+}
+.avatar img{width:100%;height:100%;object-fit:cover;}
+.info {
+    flex:1 1 auto;
+    min-width:0;
+}
+.name {
+    font-weight:600;
+    color:#0f1724;
+    font-size:15px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.status {
+    font-size:13px;
+    color:#50606f;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:4px;
+}
+.dot {
+    width:10px;height:10px;border-radius:50%;
+    display:inline-block;
+    box-shadow:0 0 0 3px rgba(0,0,0,0.02);
+}
+.dot.online{background:#24c27a; box-shadow:0 0 0 6px rgba(36,194,122,0.06);}
+.dot.offline{background:#c5c9d6; box-shadow:0 0 0 6px rgba(197,201,214,0.03);}
+
+/* Acción */
+.actions {
+    display:flex;
+    gap:8px;
+    align-items:center;
+    flex-direction:column;
+}
+.btn {
+    padding:8px 12px;
+    border-radius:8px;
+    border:0;
+    cursor:pointer;
+    font-weight:600;
+    font-size:14px;
+}
+.btn.chat {
+    background: var(--btn);
+    box-shadow: 0 6px 18px rgba(160,76,140,0.12);
+}
+.btn.disabled {
+    background:#eef2f7;
+    color:#8a94a6;
+    cursor:not-allowed;
+}
+
+/* Área derecha: detalles / placeholder */
+.content {
+    flex:1 1 auto;
+    padding:12px;
+    min-height:240px;
+}
+.placeholder {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:100%;
+    border-radius:8px;
+    background: linear-gradient(135deg, rgba(255,77,109,0.06), rgba(255,158,0,0.03));
+    color: var(--muted-2);
+    font-size:16px;
+}
+
+/* Responsive */
+@media (max-width:880px){
+    .panel{flex-direction:column;}
+    .sidebar{width:100%;border-right:0;border-bottom:1px solid #edf0f6;}
+    .actions {flex-direction:row;}
+    .friend {padding:12px;}
+    .btn {font-size:13px;}
+}
