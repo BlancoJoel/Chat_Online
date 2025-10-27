@@ -43,7 +43,7 @@ unset($_SESSION['errores'], $_SESSION['exito']);
         <a class="btn-amigos" href="amigos.php" title="Amigos">
             <img src="../img/icono_amigos.png" alt="Ver amigos">
         </a>
-        <form action="../procesos/logout.php" method="post">
+        <form action="../procesos/cerrar_sesion.php" method="post">
             <button type="submit" class="btn-salir">Salir</button>
         </form>
     </div>
@@ -118,17 +118,7 @@ unset($_SESSION['errores'], $_SESSION['exito']);
                 <input type="hidden" name="chat_id" value="<?= htmlspecialchars($canalActivo['id'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                 <textarea name="mensaje" placeholder="Escribe un mensaje..." rows="1" required></textarea>
                 <button type="submit">Enviar</button>
-            </form>
-<?php if ($alertas): ?>
-    <div class="alerta alerta-error">
-        <?= htmlspecialchars($alertas[0], ENT_QUOTES, 'UTF-8'); ?>
-    </div>
-<?php endif; ?>
-<?php if ($info): ?>
-    <div class="alerta alerta-exito">
-        <?= htmlspecialchars($info, ENT_QUOTES, 'UTF-8'); ?>
-    </div>
-<?php endif; ?>
+            </form> 
         </footer>
     </section>
 </main>
